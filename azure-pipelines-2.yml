@@ -28,12 +28,14 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
   
-- task: AzureFileCopy@4
+- task: AzureWebApp@1
   inputs:
-    SourcePath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     azureSubscription: 'MSDN Platforms Subscription (cb697725-96ec-4e23-b0f1-9a862b9b3a6e)'
-    Destination: 'AzureBlob'
-    storage: 'vlcstdstorage'
-    ContainerName: 'mycontainervlc2'
+    appType: 'webAppLinux'
+    appName: 'my-vlc-app'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    runtimeStack: 'NODE|10.10'
+    startUpCommand: 'node index.js'
+
 
 
