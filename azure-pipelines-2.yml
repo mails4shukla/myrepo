@@ -33,7 +33,7 @@ steps:
     azureSubscription: 'MSDN Platforms Subscription (cb697725-96ec-4e23-b0f1-9a862b9b3a6e)'
     appType: 'webAppLinux'
     appName: 'my-vlc-app'
-    package: '$(System.DefaultWorkingDirectory)/*.zip'
+    package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     runtimeStack: 'NODE|10.10'
     startUpCommand: 'node index.js'
 
